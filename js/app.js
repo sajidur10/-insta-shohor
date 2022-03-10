@@ -52,6 +52,9 @@ const switchTab = (id) => {
 
 const createPost = (post) => {
   const image = post.image;
+  // edit s
+  const userImage = post.userImage;
+  // edit e
   const div = document.createElement("article");
   div.classList.add("post");
   div.innerHTML = `
@@ -62,7 +65,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${userImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -162,6 +165,8 @@ const loadPosts = async () => {
   posts = await data.json();
   showPosts(posts);
   // edit s
+  console.log(posts);
+  // edit e
 }
 
 loadPosts();
