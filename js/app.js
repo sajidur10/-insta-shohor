@@ -16,9 +16,7 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-  // edit s
   likedPostsId.push(id);
-  // edit e
   showPosts(posts);
 };
 
@@ -29,9 +27,7 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-  // edit s
   return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
-  // edit e
 };
 
 const switchTab = (id) => {
@@ -59,14 +55,11 @@ const switchTab = (id) => {
 
 const createPost = (post) => {
   const image = post.image;
-  // edit s
   let com = '';
   post?.comments.forEach((comment) => com = comment);
-  // console.log(post.image)
   const commentUser = com?.user
   const commentText = com?.text
   const userImage = post.userImage;
-  // edit e
   const div = document.createElement("article");
   div.classList.add("post");
   div.innerHTML = `
@@ -166,9 +159,7 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
   const reportedPosts = getReportedPosts();
-  // edit s
   reportedPosts.forEach((post) => {
-    // edit e
     const div = createPost(post);
     document.getElementById("reported").appendChild(div);
   });
@@ -178,9 +169,6 @@ const loadPosts = async () => {
   let data = await fetch('../data/posts.json');
   posts = await data.json();
   showPosts(posts);
-  // edit s
-  console.log(posts);
-  // edit e
 }
 
 loadPosts();
