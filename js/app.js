@@ -2,6 +2,8 @@ let posts = [];
 
 const likedPostsId = [];
 const reportedPostsId = [];
+document.getElementById("reportedH1").style.display = "none";
+document.getElementById("likedH1").style.display = "none";
 
 const getLikedPosts = () => {
   return posts.filter((post) => likedPostsId.includes(post.id));
@@ -36,11 +38,15 @@ const switchTab = (id) => {
     document.getElementById("liked").style.display = "none";
     document.getElementById("reported").style.display = "none";
     document.getElementById("questions").style.display = "block";
+    document.getElementById("reportedH1").style.display = "none";
+    document.getElementById("likedH1").style.display = "none";
   } else if (id === "liked") {
     document.getElementById("liked").style.display = "block";
     document.getElementById("posts").style.display = "none";
     document.getElementById("reported").style.display = "none";
     document.getElementById("questions").style.display = "none";
+    document.getElementById("reportedH1").style.display = "none";
+    document.getElementById("likedH1").style.display = "block";
 
     displayLikedPosts();
   } else {
@@ -48,6 +54,8 @@ const switchTab = (id) => {
     document.getElementById("posts").style.display = "none";
     document.getElementById("liked").style.display = "none";
     document.getElementById("questions").style.display = "none";
+    document.getElementById("reportedH1").style.display = "block";
+    document.getElementById("likedH1").style.display = "none";
 
     displayReportedPosts();
   }
@@ -150,18 +158,22 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  const likedDiv = document.getElementById("liked");
+  likedDiv.textContent = '';
   const likedPosts = getLikedPosts();
   likedPosts.forEach((post) => {
     const div = createPost(post);
-    document.getElementById("liked").appendChild(div);
+    likedDiv.appendChild(div);
   });
 };
 
 const displayReportedPosts = () => {
+  const reportedDiv = document.getElementById("reported");
+  reportedDiv.textContent = '';
   const reportedPosts = getReportedPosts();
   reportedPosts.forEach((post) => {
     const div = createPost(post);
-    document.getElementById("reported").appendChild(div);
+    reportedDiv.appendChild(div);
   });
 };
 
